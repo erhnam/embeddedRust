@@ -32,7 +32,7 @@ programs, check [the embedded Rust book][book].
 0. Before we begin you need to identify some characteristics of the target
   device as these will be used to configure the project:
 
-- The ARM core. e.g. Cortex-M3.
+- The ARM core. e.g. Cortex-M4.
 
 - Does the ARM core include an FPU? Cortex-M4**F** and Cortex-M7**F** cores do.
 
@@ -45,8 +45,8 @@ programs, check [the embedded Rust book][book].
 You can find this information in the data sheet or the reference manual of your
 device.
 
-In this example we'll be using the STM32F3DISCOVERY. This board contains an
-STM32F303VCT6 microcontroller. This microcontroller has:
+In this example we'll be using the STM32F401RE. This board contains an
+STM32F401RE microcontroller. This microcontroller has:
 
 - A Cortex-M4F core that includes a single precision FPU
 
@@ -67,7 +67,7 @@ $ cd app
 ```
 
 2. Set a default compilation target. There are four options as mentioned at the
-   bottom of `.cargo/config`. For the STM32F303VCT6, which has a Cortex-M4F
+   bottom of `.cargo/config`. For the STM32F401RE, which has a Cortex-M4F
    core, we'll pick the `thumbv7em-none-eabihf` target.
 
 ``` console
@@ -90,12 +90,12 @@ target = "thumbv7em-none-eabihf" # Cortex-M4F and Cortex-M7F (with FPU)
 
 ``` console
 $ cat memory.x
-/* Linker script for the STM32F303VCT6 */
+/* Linker script for the STM32F401RE */
 MEMORY
 {
   /* NOTE 1 K = 1 KiBi = 1024 bytes */
   FLASH : ORIGIN = 0x08000000, LENGTH = 256K
-  RAM : ORIGIN = 0x20000000, LENGTH = 40K
+  RAM : ORIGIN = 0x20000000, LENGTH = 64K
 }
 ```
 
